@@ -14,8 +14,21 @@ class CreateDonorsTable extends Migration
     public function up()
     {
         Schema::create('donors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table -> increments('id');
+            $table -> string('donor_code', 15 ) -> unique();
+            $table -> string('name', 50 );
+            $table -> string('country', 50 );
+            $table -> string('city', 50 );
+            $table -> string('state', 50 );
+            $table -> string('postal_code', 10 );
+            $table -> string('street_address', 100 );
+            $table -> string('phone', 15 );
+            $table -> string('fax', 15 );
+            $table -> string('mobile', 15 );
+            $table -> string('email' ) -> unique();
+            $table -> text('about' );
+            $table -> string('logo', 150 );
+            $table -> timestamps();
         });
     }
 

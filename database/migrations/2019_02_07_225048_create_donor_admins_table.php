@@ -14,8 +14,19 @@ class CreateDonorAdminsTable extends Migration
     public function up()
     {
         Schema::create('donor_admins', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table -> increments('id');
+            $table -> string('admin_code', 15 ) -> unique();
+            $table -> string('donor_code', 15 );
+            $table -> string('department', 30 );
+            $table -> string('position', 30 );
+            $table -> string('phone', 15 );
+            $table -> string('mobile', 15 );
+            $table -> string('email', 50 ) -> unique();
+            $table -> string('password', 200 );
+
+            $table -> foreign( 'donor_code' ) -> references( 'donor_code' ) -> on( 'donors' ) -> onDelete( 'cascade' );
+
+            $table -> timestamps();
         });
     }
 
